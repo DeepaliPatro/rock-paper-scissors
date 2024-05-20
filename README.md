@@ -4,7 +4,7 @@
 
 A simple Rock, Paper, Scissors game built with Vue.js. The app allows users to play against the computer, with the game results (win, lose, draw) tracked and stored in the browser's local storage.
 
-Try it [here](https://rock-pepper-scissors.vercel.app/).
+Try it [here](https://rock-paper-scissors-deepalipatros-projects.vercel.app/).
 
 ## Features
 
