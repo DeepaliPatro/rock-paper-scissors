@@ -119,8 +119,8 @@
             Reset score
           </button>
         </div>
-        <Scoreboard :wins="wins" :draws="draws" :losses="losses" />
       </div>
+      <Scoreboard :wins="wins" :draws="draws" :losses="losses" />
     </main>
   </div>
 </template>
