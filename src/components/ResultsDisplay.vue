@@ -41,10 +41,10 @@
 
 <template>
     <div>
-        <div class="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-10 mx-2 sm:mx-3 md:mx-5">
+        <div class="flex items-center justify-center gap-5 sm:gap-5 md:gap-6 lg:gap-10 mx-2 sm:mx-3 md:mx-5">
             <div class="flex flex-col items-center">
                 <p class="text-3xl mb-4">You choose</p>
-                <div :class="['text-4xl sm:text-6xl lg:text-8xl rounded-full text-white p-5 max-w-fit', playerResultClass]">
+                <div :class="['text-6xl sm:text-6xl lg:text-8xl rounded-full text-white p-5 max-w-fit', playerResultClass]">
                     {{ getEmoji(choice) }}
                 </div>
             </div>
@@ -53,7 +53,7 @@
     
             <div class="flex flex-col items-center">
                 <p class="text-3xl mb-4">Computer choose</p>
-                <div :class="['text-4xl sm:text-6xl lg:text-8xl rounded-full text-white p-5 max-w-fit', computerResultClass]">
+                <div :class="['text-6xl sm:text-6xl lg:text-8xl rounded-full text-white p-5 max-w-fit', computerResultClass]">
                     {{ getEmoji(computerChoice) }}
                 </div>
             </div>
