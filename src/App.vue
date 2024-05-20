@@ -111,7 +111,6 @@
       </div>
       <div v-else>
         <ResultsDisplay :choice="choice" :computerChoice="computerChoice" :message="message" />
-        <Scoreboard :wins="wins" :draws="draws" :losses="losses" />
         <div class="flex items-center justify-center gap-5 mx-5">
           <button @click="playAgain()" class="text-lg rounded-full w-50 p-5 bg-white text-slate-500 shadow-lg shadow-slate-600 hover:bg-slate-200 hover:shadow-lg hover:shadow-slate-600 active:shadow-none transition-all duration-300 py-2 px-4">
             Play Again
@@ -120,6 +119,7 @@
             Reset score
           </button>
         </div>
+        <Scoreboard :wins="wins" :draws="draws" :losses="losses" />
       </div>
     </main>
   </div>
