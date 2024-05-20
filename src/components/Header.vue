@@ -9,7 +9,8 @@ export default {
 </script>
 
 <template>
-    <header class="container p-6">
-      <h1 class="text-5xl font-bold">{{ title }}</h1>
-    </header>
+  <header class="container p-6">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">{{ title }}</h1>
+  </header>
+
 </template>

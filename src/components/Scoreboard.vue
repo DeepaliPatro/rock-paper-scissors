@@ -19,7 +19,7 @@
 </script>
 
 <template>
-    <div class="mt-12 text-3xl mb-4">
+    <div class="mt-12 text-2xl sm:text-2xl md:text-3xl lg:text-3xl  mb-4">
         Wins({{ wins }}) | Draws({{ draws }}) | Losses({{ losses }})
     </div>
 </template>
