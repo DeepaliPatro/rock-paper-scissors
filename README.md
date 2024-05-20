@@ -2,7 +2,9 @@
 
 ## Description
 
-A simple Rock, Paper, Scissors game built with Vue.js. The app allows users to play against the computer, with the game results (win, lose, draw) tracked and stored in the browser's local storage. The app is designed to be responsive and can be converted into a mobile app using Capacitor.
+A simple Rock, Paper, Scissors game built with Vue.js. The app allows users to play against the computer, with the game results (win, lose, draw) tracked and stored in the browser's local storage.
+
+Try it [here](https://rock-pepper-scissors.vercel.app/).
 
 ## Features
 
