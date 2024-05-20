@@ -10,7 +10,7 @@ export default {
 
 <template>
   <header class="container p-6">
-    <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-center">{{ title }}</h1>
+    <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-center">{{ title }}</h1>
   </header>
 
 </template>
