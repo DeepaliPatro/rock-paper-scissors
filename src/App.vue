@@ -3,6 +3,7 @@
   import GameDisplay from './components/GameDisplay.vue';
   import ResultsDisplay from './components/ResultsDisplay.vue';
   import Scoreboard from './components/Scoreboard.vue';
+  import ResetConfirmationDialog from './components/ResetConfirmationDialog.vue';
 
   export default {
     components: {
@@ -10,6 +11,7 @@
       GameDisplay,
       ResultsDisplay,
       Scoreboard,
+      ResetConfirmationDialog,
     },
     data: function(){
       return {
@@ -21,7 +23,8 @@
         computerChoice: null,
         message: '',
         result: null,
-
+        isResetConfirmationOpen: false,
+        muted: false,
         results : {
           'rock': {
             'rock': 'draw',
@@ -48,6 +51,7 @@
         this.computerChoice = this.getComputerChoice();
         this.message = this.getResultMessage();
         this.updateScore(this.result);
+        return null;
       },
 
       getComputerChoice() {
@@ -58,10 +62,13 @@
       getResultMessage() {
         this.result = this.results[this.choice][this.computerChoice];
         if (this.result === 'win') {
+          this.playSound('win');
           return 'You Win 🙂';
         } else if (this.result === 'draw') {
+          this.playSound('draw');
           return "It's a draw 😐";
         } else if(this.result === 'loss'){
+          this.playSound('loss');
           return 'You lose ☹️';
         }
       },
@@ -91,12 +98,43 @@
         localStorage.setItem('wins', this.wins);
         localStorage.setItem('draws', this.draws);
         localStorage.setItem('losses', this.losses);
+        this.playSound('start');
         this.playAgain();
       },
       confirmReset() {
-        if (window.confirm('Are you sure you want to reset the score?')) {
+        this.isResetConfirmationOpen = true;
+      },
+      handleResetConfirmation(confirmed) {
+        if (confirmed) {
           this.resetScore();
         }
+        this.isResetConfirmationOpen = false;
+      },
+      playSound(type) {
+        if (this.muted) return;
+        let audio = new Audio();
+        switch (type) {
+          case 'win':
+            audio.src = '/sounds/win.wav';
+            break;
+          case 'loss':
+            audio.src = '/sounds/loose.wav';
+            break;
+          case 'draw':
+            audio.src = '/sounds/draw.wav';
+            break;
+          case 'start':
+            audio.src = '/sounds/open.wav';
+            break;
+        }
+        audio.play();
+        setTimeout(() => {
+          audio.pause();
+          audio.currentTime = 0; // Reset the audio to the beginning
+        }, 1300);
+      },
+      toggleMute() {
+        this.muted = !this.muted;
       },
     }
   };
@@ -104,8 +142,8 @@
 
 <template>
   <div class="bg-white text-slate-500 text-center min-h-screen flex flex-col">
-    <Header />
-    <main class="container">
+    <Header :confirmReset="confirmReset" :muted="muted" @toggle-mute="toggleMute"/>
+    <main class="flex-grow container mx-auto p-4">
       <div v-if="choice == null" class="flex items-center justify-center gap-5 mx-5">
         <GameDisplay @play="play" />
       </div>
@@ -122,5 +160,6 @@
       </div>
       <Scoreboard :wins="wins" :draws="draws" :losses="losses" />
     </main>
+    <ResetConfirmationDialog v-if="isResetConfirmationOpen" @confirmed="handleResetConfirmation(true)" @canceled="handleResetConfirmation(false)" />
   </div>
 </template>
